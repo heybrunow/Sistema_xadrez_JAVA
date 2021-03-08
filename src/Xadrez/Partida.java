@@ -30,8 +30,19 @@ public class Partida {
 	}
 	
 	public void iniciaPartida() {
-		colocaNovaPeca('b', 6, new Rook(tabuleiro, Cor.BRANCO));
-		colocaNovaPeca('e', 8,new King(tabuleiro, Cor.PRETO));
-		colocaNovaPeca('e', 1,new King(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('c', 1, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('c', 2, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('d', 2, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('e', 2, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('e', 1, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('d', 1, new King(tabuleiro, Cor.BRANCO));
+
+
+		colocaNovaPeca('c', 7, new Rook(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('c', 8, new Rook(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('d', 7, new Rook(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('e', 7, new Rook(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('e', 8, new Rook(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('d', 8, new King(tabuleiro, Cor.PRETO));
 	}
 }
