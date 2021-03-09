@@ -8,6 +8,7 @@ import Xadrez.PosicaoXadrez;
 
 public class UI {
 	
+	
 	public static PosicaoXadrez lePosicaoXadrez(Scanner sc) {
 		try {
 			String s = sc.nextLine();
