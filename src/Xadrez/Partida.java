@@ -41,6 +41,9 @@ public class Partida {
 		if(!tabuleiro.temUmaPeca(posicao)) {
 			throw new XadrezException("Não existe peca na posicao de origem");
 		}
+		if(!tabuleiro.peca(posicao).temMovimentoPossivel()) {
+			throw new XadrezException("Não existe movimentos possiveis para a peca escolhida");
+		}
 	}
 	
 	private Peca fazMovimento(Posicao origem, Posicao alvo) {
