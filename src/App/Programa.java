@@ -19,6 +19,9 @@ public class Programa {
 				System.out.println();
 				System.out.println("Origem:");
 				PosicaoXadrez origem = UI.lePosicaoXadrez(sc);
+				System.out.println("Você pode mover sua peca para as posicoes marcadas com X");
+				boolean[][] moivmentosPossiveis = partida.movimentosPossiveis(origem);
+				UI.mostraTabuleiro(partida.getPecasPartida(), moivmentosPossiveis);
 				
 				System.out.println();
 				System.out.println("Destino:");

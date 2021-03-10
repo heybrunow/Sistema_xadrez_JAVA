@@ -25,21 +25,37 @@ public class UI {
 		for(int i=0; i<pecas.length; i++) {
 			System.out.print((8-i)+" ");
 			for(int j=0; j<pecas.length; j++) {
-				mostraPeca(pecas[i][j]);
+				mostraPeca(pecas[i][j], false);
 			}
 			System.out.println();
 		}
 		System.out.println("  A B C D E F G H");
 	}
 	
-	private static void mostraPeca(PecaXadrez peca) {
-		if(peca ==null) {
-			System.out.print("-");
+	public static void mostraTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis) {
+		for(int i=0; i<pecas.length; i++) {
+			System.out.print((8-i)+" ");
+			for(int j=0; j<pecas.length; j++) {
+				mostraPeca(pecas[i][j], movimentosPossiveis[i][j]);
+			}
+			System.out.println();
 		}
-		else {
-			System.out.print(peca);
+		System.out.println("  A B C D E F G H");
+	}
+	
+	private static void mostraPeca(PecaXadrez peca, boolean background) {
+		if(background) {
+			System.out.print("x");
+		}else {
+			if(peca ==null) {
+				System.out.print("-");
+			}
+			else {
+				System.out.print(peca);
+			}
+			System.out.print(" ");
 		}
-		System.out.print(" ");
+		
 	}
 
 }
