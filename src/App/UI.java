@@ -53,8 +53,9 @@ public class UI {
 			else {
 				System.out.print(peca);
 			}
-			System.out.print(" ");
+			
 		}
+		System.out.print(" ");
 		
 	}
 
