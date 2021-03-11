@@ -15,7 +15,7 @@ public class Programa {
 		
 		while(true) {
 			try {
-				UI.mostraTabuleiro(partida.getPecasPartida());
+				UI.mostraPartida(partida);
 				System.out.println();
 				System.out.println("Origem:");
 				PosicaoXadrez origem = UI.lePosicaoXadrez(sc);
