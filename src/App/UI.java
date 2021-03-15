@@ -13,8 +13,8 @@ import Xadrez.PecaXadrez;
 import Xadrez.PosicaoXadrez;
 
 public class UI {
-	
-	
+
+
 	public static PosicaoXadrez lePosicaoXadrez(Scanner sc) {
 		try {
 			String s = sc.nextLine();
@@ -26,15 +26,18 @@ public class UI {
 			throw new InputMismatchException("Erro lendo posicao do xadrez: valores validos sao de a1 até h8");
 		}
 	}
-	
+
 	public static void mostraPartida(Partida partida, List<PecaXadrez>capturadas) {
 		mostraTabuleiro(partida.getPecasPartida());
 		mostraPecasCapturadas(capturadas);
 		System.out.println();
 		System.out.println("turno: "+partida.getTurno());
 		System.out.println("esperando jogada: "+partida.getJogadorAtual());
+		if(partida.getCheck()) {
+			System.out.println("CHECK!");
+		}
 	}
-	
+
 	public static void mostraTabuleiro(PecaXadrez[][] pecas) {
 		for(int i=0; i<pecas.length; i++) {
 			System.out.print((8-i)+" ");
@@ -45,7 +48,7 @@ public class UI {
 		}
 		System.out.println("  A B C D E F G H");
 	}
-	
+
 	public static void mostraTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis) {
 		for(int i=0; i<pecas.length; i++) {
 			System.out.print((8-i)+" ");
@@ -56,7 +59,7 @@ public class UI {
 		}
 		System.out.println("  A B C D E F G H");
 	}
-	
+
 	private static void mostraPeca(PecaXadrez peca, boolean background) {
 		if(background) {
 			System.out.print("x");
@@ -67,12 +70,12 @@ public class UI {
 			else {
 				System.out.print(peca);
 			}
-			
+
 		}
 		System.out.print(" ");
-		
+
 	}
-	
+
 	private static void mostraPecasCapturadas(List<PecaXadrez> capturadas) {
 		List<PecaXadrez> brancas = capturadas.stream().filter(x -> x.getCor() == Cor.BRANCO).collect(Collectors.toList());
 		List<PecaXadrez> pretas = capturadas.stream().filter(x -> x.getCor() == Cor.PRETO).collect(Collectors.toList());
@@ -80,8 +83,8 @@ public class UI {
 		System.out.println(Arrays.toString(brancas.toArray()));
 		System.out.println("Peças capturadas pretas:");
 		System.out.println(Arrays.toString(pretas.toArray()));
-		
-		
+
+
 	}
 
 }

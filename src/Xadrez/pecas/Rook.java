@@ -7,8 +7,8 @@ import Xadrez.PecaXadrez;
 
 public class Rook extends PecaXadrez{
 
-	
-	
+
+
 	public Rook(Tabuleiro tabuleiro, Cor cor) {
 		super(tabuleiro, cor);
 	}
@@ -40,7 +40,7 @@ public class Rook extends PecaXadrez{
 		if(getTabuleiro().posicaoExiste(aux) && temPecaOponente(aux)) {
 			matriz[aux.getLinha()][aux.getColuna()] = true;
 		}
-		
+
 		//pra direita
 		aux.setValores(posicao.getLinha(), posicao.getColuna()+1);
 		while(getTabuleiro().posicaoExiste(aux)&& !getTabuleiro().temUmaPeca(aux)) {
@@ -50,7 +50,7 @@ public class Rook extends PecaXadrez{
 		if(getTabuleiro().posicaoExiste(aux) && temPecaOponente(aux)) {
 			matriz[aux.getLinha()][aux.getColuna()] = true;
 		}
-		
+
 		//pra baixo
 		aux.setValores(posicao.getLinha()+1, posicao.getColuna());
 		while(getTabuleiro().posicaoExiste(aux)&& !getTabuleiro().temUmaPeca(aux)) {
@@ -60,9 +60,9 @@ public class Rook extends PecaXadrez{
 		if(getTabuleiro().posicaoExiste(aux) && temPecaOponente(aux)) {
 			matriz[aux.getLinha()][aux.getColuna()] = true;
 		}
-		
+
 		return matriz;
 	}
-	
-	
+
+
 }

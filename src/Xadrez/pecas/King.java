@@ -77,10 +77,10 @@ public class King extends PecaXadrez{
 
 		return mat;
 	}
-	
-	
-	
-	
+
+
+
+
 }
-	
-	
+
+
