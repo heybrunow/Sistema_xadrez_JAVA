@@ -16,7 +16,7 @@ public class Programa {
 		Partida partida = new Partida();
 		List<PecaXadrez>capturadas = new ArrayList<PecaXadrez>();
 		
-		while(true) {
+		while(!partida.getCheck()) {
 			try {
 				UI.mostraPartida(partida, capturadas);
 				System.out.println();
@@ -44,6 +44,7 @@ public class Programa {
 			}
 		
 		}
+		UI.mostraPartida(partida, capturadas);
 		
 	}
 
