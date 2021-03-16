@@ -8,6 +8,7 @@ import Tabuleiro.Peca;
 import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
 import Xadrez.pecas.King;
+import Xadrez.pecas.Pawn;
 import Xadrez.pecas.Rook;
 
 public class Partida {
@@ -173,26 +174,29 @@ public class Partida {
 
 	public void iniciaPartida() {
 		
-		colocaNovaPeca('h', 7, new Rook(tabuleiro, Cor.BRANCO));
-		colocaNovaPeca('d', 1, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('a', 1, new Rook(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('e', 1, new King(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('h', 1, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('a', 2, new Pawn(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('b', 2, new Pawn(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('c', 2, new Pawn(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('d', 2, new Pawn(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('e', 2, new Pawn(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('f', 2, new Pawn(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('g', 2, new Pawn(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('h', 2, new Pawn(tabuleiro, Cor.BRANCO));
 		
-		colocaNovaPeca('b', 8, new Rook(tabuleiro, Cor.PRETO));
-		colocaNovaPeca('a', 8, new King(tabuleiro, Cor.PRETO));
-//		colocaNovaPeca('c', 1, new Rook(tabuleiro, Cor.BRANCO));
-//		colocaNovaPeca('c', 2, new Rook(tabuleiro, Cor.BRANCO));
-//		colocaNovaPeca('d', 2, new Rook(tabuleiro, Cor.BRANCO));
-//		colocaNovaPeca('e', 2, new Rook(tabuleiro, Cor.BRANCO));
-//		colocaNovaPeca('e', 1, new Rook(tabuleiro, Cor.BRANCO));
-//		colocaNovaPeca('d', 1, new King(tabuleiro, Cor.BRANCO));
-//
-//
-//		colocaNovaPeca('c', 7, new Rook(tabuleiro, Cor.PRETO));
-//		colocaNovaPeca('c', 8, new Rook(tabuleiro, Cor.PRETO));
-//		colocaNovaPeca('d', 7, new Rook(tabuleiro, Cor.PRETO));
-//		colocaNovaPeca('e', 7, new Rook(tabuleiro, Cor.PRETO));
-//		colocaNovaPeca('e', 8, new Rook(tabuleiro, Cor.PRETO));
-//		colocaNovaPeca('d', 8, new King(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('a', 8, new Rook(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('e', 8, new King(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('h', 8, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('a', 7, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('b', 7, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('c', 7, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('d', 7, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('e', 7, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('f', 7, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('g', 7, new Pawn(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('h', 7, new Pawn(tabuleiro, Cor.PRETO));
 		
 	}
 	//GETTERS
