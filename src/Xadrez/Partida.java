@@ -9,6 +9,7 @@ import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
 import Xadrez.pecas.Bishop;
 import Xadrez.pecas.King;
+import Xadrez.pecas.Knight;
 import Xadrez.pecas.Pawn;
 import Xadrez.pecas.Rook;
 
@@ -176,9 +177,11 @@ public class Partida {
 	public void iniciaPartida() {
 		
 		colocaNovaPeca('a', 1, new Rook(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('b', 1, new Knight(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('c', 1, new Bishop(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('e', 1, new King(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('f', 1, new Bishop(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('g', 1, new Knight(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('h', 1, new Rook(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('a', 2, new Pawn(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('b', 2, new Pawn(tabuleiro, Cor.BRANCO));
@@ -190,9 +193,11 @@ public class Partida {
 		colocaNovaPeca('h', 2, new Pawn(tabuleiro, Cor.BRANCO));
 		
 		colocaNovaPeca('a', 8, new Rook(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('b', 8, new Knight(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('c', 8, new Bishop(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('e', 8, new King(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('f', 8, new Bishop(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('g', 8, new Knight(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('h', 8, new Pawn(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('a', 7, new Pawn(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('b', 7, new Pawn(tabuleiro, Cor.PRETO));

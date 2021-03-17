@@ -5,15 +5,15 @@ import Tabuleiro.Tabuleiro;
 import Xadrez.Cor;
 import Xadrez.PecaXadrez;
 
-public class King extends PecaXadrez{
+public class Knight extends PecaXadrez{
 
-	public King(Tabuleiro tabuleiro, Cor cor) {
+	public Knight(Tabuleiro tabuleiro, Cor cor) {
 		super(tabuleiro, cor);
 	}
 
 	@Override
 	public String toString() {
-		return "K";
+		return "N";
 	}
 
 	private boolean podeMover(Posicao posicao) {
@@ -28,49 +28,49 @@ public class King extends PecaXadrez{
 		Posicao p = new Posicao(0, 0);
 
 		// above
-		p.setValores(posicao.getLinha() - 1, posicao.getColuna());
+		p.setValores(posicao.getLinha() - 1, posicao.getColuna()- 2);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// below
-		p.setValores(posicao.getLinha() + 1, posicao.getColuna());
+		p.setValores(posicao.getLinha() - 2, posicao.getColuna()-1);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// left
-		p.setValores(posicao.getLinha(), posicao.getColuna() - 1);
+		p.setValores(posicao.getLinha() -2 , posicao.getColuna() + 1);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// right
-		p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
+		p.setValores(posicao.getLinha()-1, posicao.getColuna() + 2);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// nw
-		p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1);
+		p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// ne
-		p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1);
+		p.setValores(posicao.getLinha() + 2, posicao.getColuna() + 1);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// sw
-		p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 1);
+		p.setValores(posicao.getLinha() + 2, posicao.getColuna() - 1);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// se
-		p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
+		p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 2);
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
@@ -82,7 +82,3 @@ public class King extends PecaXadrez{
 
 
 }
-
-
-
-
