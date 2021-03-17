@@ -11,6 +11,7 @@ import Xadrez.pecas.Bishop;
 import Xadrez.pecas.King;
 import Xadrez.pecas.Knight;
 import Xadrez.pecas.Pawn;
+import Xadrez.pecas.Queen;
 import Xadrez.pecas.Rook;
 
 public class Partida {
@@ -179,6 +180,7 @@ public class Partida {
 		colocaNovaPeca('a', 1, new Rook(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('b', 1, new Knight(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('c', 1, new Bishop(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('d', 1, new Queen(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('e', 1, new King(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('f', 1, new Bishop(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('g', 1, new Knight(tabuleiro, Cor.BRANCO));
@@ -195,6 +197,7 @@ public class Partida {
 		colocaNovaPeca('a', 8, new Rook(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('b', 8, new Knight(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('c', 8, new Bishop(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('d', 8, new Queen(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('e', 8, new King(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('f', 8, new Bishop(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('g', 8, new Knight(tabuleiro, Cor.PRETO));
