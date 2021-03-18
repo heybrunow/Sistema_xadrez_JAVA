@@ -3,17 +3,26 @@ package Xadrez.pecas;
 import Tabuleiro.Posicao;
 import Tabuleiro.Tabuleiro;
 import Xadrez.Cor;
+import Xadrez.Partida;
 import Xadrez.PecaXadrez;
 
 public class King extends PecaXadrez{
 
-	public King(Tabuleiro tabuleiro, Cor cor) {
+	private Partida partida;
+
+	public King(Tabuleiro tabuleiro, Cor cor, Partida partida) {
 		super(tabuleiro, cor);
+		this.partida = partida;
 	}
 
 	@Override
 	public String toString() {
 		return "K";
+	}
+
+	private boolean testeRookCastling(Posicao posicao) {
+		PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
+		return p != null && p instanceof Rook && p.getCor() == getCor() && p.getContadorMovimentos() == 0;
 	}
 
 	private boolean podeMover(Posicao posicao) {
@@ -74,6 +83,31 @@ public class King extends PecaXadrez{
 		if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
 			mat[p.getLinha()][p.getColuna()] = true;
 		}
+		//#moivmento especial castling 
+		if(getContadorMovimentos()==0 && !partida.getCheck()) {
+			//castling lado do rei
+			Posicao posicaoT1 = new Posicao(posicao.getLinha(), posicao.getColuna()+3);
+			if(testeRookCastling(posicaoT1)) {
+				Posicao p1 =  new Posicao(posicao.getLinha(), posicao.getColuna()+1);
+				Posicao p2 =  new Posicao(posicao.getLinha(), posicao.getColuna()+2);
+				if(getTabuleiro().peca(p1) == null && getTabuleiro().peca(p2) == null) {
+					mat[posicao.getLinha()][posicao.getColuna()+2] = true;
+				}
+			}
+			//castling lado rainha
+			if(getContadorMovimentos()==0 && !partida.getCheck()) {
+				//castling lado do rei
+				Posicao posicaoT2 = new Posicao(posicao.getLinha(), posicao.getColuna()-4);
+				if(testeRookCastling(posicaoT1));
+				Posicao p1 =  new Posicao(posicao.getLinha(), posicao.getColuna()-1);
+				Posicao p2 =  new Posicao(posicao.getLinha(), posicao.getColuna()-2);
+				Posicao p3 =  new Posicao(posicao.getLinha(), posicao.getColuna()-3);
+				if(getTabuleiro().peca(p1) == null && getTabuleiro().peca(p2) == null && getTabuleiro().peca(p3) == null) {
+					mat[posicao.getLinha()][posicao.getColuna()-2] = true;
+				}
+			}
+		}
+
 
 		return mat;
 	}

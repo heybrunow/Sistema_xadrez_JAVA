@@ -62,6 +62,7 @@ public class Partida {
 		}
 		
 		check = (testaCheck(oponente(jogadorAtual)))? true : false;
+		
 		if(testaCheckMate(oponente(jogadorAtual))) {
 			checkMate = true;
 		}
@@ -104,6 +105,24 @@ public class Partida {
 			pecasNoTabuleiro.remove(pecaCapturada);
 			pecasCapturadas.add(pecaCapturada);
 		}
+		//movimento especial castling lado do rei
+		if(p instanceof King && alvo.getColuna() == origem.getColuna() +2) {
+			Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna()+3);
+			Posicao alvoT = new Posicao(origem.getLinha(), origem.getColuna()+1);
+			PecaXadrez torre = (PecaXadrez)tabuleiro.removePeca(origemT);
+			tabuleiro.colocaPeca(torre, alvoT);
+			torre.incrementaMovimentosContados();
+			
+		}
+		//movimento especial castling lado rainha
+		if(p instanceof King && alvo.getColuna() == origem.getColuna() -2) {
+			Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna()-4);
+			Posicao alvoT = new Posicao(origem.getLinha(), origem.getColuna()-1);
+			PecaXadrez torre = (PecaXadrez)tabuleiro.removePeca(origemT);
+			tabuleiro.colocaPeca(torre, alvoT);
+			torre.incrementaMovimentosContados();
+		}
+		
 		return pecaCapturada;
 	}
 
@@ -116,6 +135,23 @@ public class Partida {
 			pecasCapturadas.remove(pecaCapturada);
 			pecasNoTabuleiro.add(pecaCapturada);
 		}
+		//movimento especial castling lado do rei
+				if(p instanceof King && alvo.getColuna() == origem.getColuna() +2) {
+					Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna()+3);
+					Posicao alvoT = new Posicao(origem.getLinha(), origem.getColuna()+1);
+					PecaXadrez torre = (PecaXadrez)tabuleiro.removePeca(alvoT);
+					tabuleiro.colocaPeca(torre, origemT);
+					torre.decrementaMovimentosContados();
+					
+				}
+				//movimento especial castling lado rainha
+				if(p instanceof King && alvo.getColuna() == origem.getColuna() -2) {
+					Posicao origemT = new Posicao(origem.getLinha(), origem.getColuna()-4);
+					Posicao alvoT = new Posicao(origem.getLinha(), origem.getColuna()-1);
+					PecaXadrez torre = (PecaXadrez)tabuleiro.removePeca(alvoT);
+					tabuleiro.colocaPeca(torre, origemT);
+					torre.decrementaMovimentosContados();
+				}
 	}
 
 	private Cor oponente(Cor cor) {
@@ -181,7 +217,7 @@ public class Partida {
 		colocaNovaPeca('b', 1, new Knight(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('c', 1, new Bishop(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('d', 1, new Queen(tabuleiro, Cor.BRANCO));
-		colocaNovaPeca('e', 1, new King(tabuleiro, Cor.BRANCO));
+		colocaNovaPeca('e', 1, new King(tabuleiro, Cor.BRANCO, this));
 		colocaNovaPeca('f', 1, new Bishop(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('g', 1, new Knight(tabuleiro, Cor.BRANCO));
 		colocaNovaPeca('h', 1, new Rook(tabuleiro, Cor.BRANCO));
@@ -198,7 +234,7 @@ public class Partida {
 		colocaNovaPeca('b', 8, new Knight(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('c', 8, new Bishop(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('d', 8, new Queen(tabuleiro, Cor.PRETO));
-		colocaNovaPeca('e', 8, new King(tabuleiro, Cor.PRETO));
+		colocaNovaPeca('e', 8, new King(tabuleiro, Cor.PRETO, this));
 		colocaNovaPeca('f', 8, new Bishop(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('g', 8, new Knight(tabuleiro, Cor.PRETO));
 		colocaNovaPeca('h', 8, new Pawn(tabuleiro, Cor.PRETO));
