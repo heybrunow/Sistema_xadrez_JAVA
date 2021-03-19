@@ -1,5 +1,6 @@
 package Xadrez;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,8 @@ public class Partida {
 	private boolean check;
 	private boolean checkMate;
 	private PecaXadrez vulneravelEnPassant;
+	private PecaXadrez promovida;
+
 	private List<Peca> pecasNoTabuleiro = new ArrayList<Peca>();
 	private List<Peca> pecasCapturadas = new ArrayList<Peca>();
 
@@ -60,8 +63,19 @@ public class Partida {
 			desfazMovimento(origem, alvo, pecaCapturada);
 			throw new XadrezException("Você nao pode se colocar em check");
 		}
-
 		PecaXadrez pecaMovida = (PecaXadrez) tabuleiro.peca(alvo);
+
+		//movimento especial promoção
+		promovida = null;
+		if(pecaMovida instanceof Pawn) {
+			if(pecaMovida.getCor() == Cor.BRANCO && alvo.getLinha() == 0 || pecaMovida.getCor() == Cor.PRETO && alvo.getLinha() == 0 ) { 
+				promovida =  (PecaXadrez)tabuleiro.peca(alvo);
+				promovida = repoePecaPromovida("Q");
+
+			}
+		}
+
+
 
 		check = (testaCheck(oponente(jogadorAtual))) ? true : false;
 
@@ -80,6 +94,32 @@ public class Partida {
 		return (PecaXadrez) pecaCapturada;
 
 	}
+
+	public PecaXadrez repoePecaPromovida(String tipo) {
+		if(promovida == null) {
+			throw new IllegalStateException("Nao há peca pra ser promovida");
+		}
+		if(!tipo.equals("B") && !tipo.equals("N") && !tipo.equals("R") && !tipo.equals("B") && !tipo.equals("Q")) {
+			throw new InvalidParameterException("Tipo invalido pra promocao");
+		}
+		Posicao pos = promovida.getPosicaoXadrez().paraPosicao();
+		Peca p = tabuleiro.removePeca(pos);
+		pecasNoTabuleiro.remove(p);
+
+		PecaXadrez pecaNova = novaPeca(tipo,  promovida.getCor());
+		tabuleiro.colocaPeca(pecaNova, pos);
+		pecasNoTabuleiro.add(pecaNova);
+		return pecaNova;
+
+	}
+
+	private PecaXadrez novaPeca(String tipo, Cor cor) {
+		if(tipo.equals("B"))return new Bishop(tabuleiro, cor);
+		if(tipo.equals("N"))return new Knight(tabuleiro, cor);
+		if(tipo.equals("Q"))return new Queen(tabuleiro, cor);
+		return new Rook(tabuleiro, cor);
+	}
+
 
 	private void validaPosicaoOrigem(Posicao posicao) {
 		if (!tabuleiro.temUmaPeca(posicao)) {
@@ -307,4 +347,8 @@ public class Partida {
 		return vulneravelEnPassant;
 	}
 
+	public PecaXadrez getPromovida() {
+		return promovida;
+
+	}
 }
