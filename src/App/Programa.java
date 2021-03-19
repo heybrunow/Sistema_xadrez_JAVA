@@ -37,7 +37,11 @@ public class Programa {
 				
 				if(partida.getPromovida() != null) {
 					System.out.print("Insira peca pra promocao (B/N/R/Q): ");
-					String tipo = sc.nextLine();
+					String tipo = sc.nextLine().toUpperCase();
+					while (!tipo.equals("B") && !tipo.equals("N") && !tipo.equals("R") && !tipo.equals("B") && !tipo.equals("Q")) {
+						System.out.println("Valor invalido, insira uma peca pra promocao (B/N/R/Q)");
+						tipo = sc.nextLine().toUpperCase();
+					}
 					partida.repoePecaPromovida(tipo);
 				}
 				

@@ -98,7 +98,7 @@ public class King extends PecaXadrez{
 			if(getContadorMovimentos()==0 && !partida.getCheck()) {
 				//castling lado do rei
 				Posicao posicaoT2 = new Posicao(posicao.getLinha(), posicao.getColuna()-4);
-				if(testeRookCastling(posicaoT1));
+				if(testeRookCastling(posicaoT2));
 				Posicao p1 =  new Posicao(posicao.getLinha(), posicao.getColuna()-1);
 				Posicao p2 =  new Posicao(posicao.getLinha(), posicao.getColuna()-2);
 				Posicao p3 =  new Posicao(posicao.getLinha(), posicao.getColuna()-3);
